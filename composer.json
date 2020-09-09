@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "ext-json": "*",
-        "php": ">=7.2",
+        "php": ">=7.4",
         "illuminate/console": "^5.5|^6.0|^7.0",
         "illuminate/contracts": "^5.5|^6.0|^7.0",
         "illuminate/support": "^5.5|^6.0|^7.0",
@@ -13,7 +13,11 @@
         "aws/aws-sdk-php": "^3.133"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0"
+        "orchestra/testbench": "^5.0",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-mockery": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "friendsofphp/php-cs-fixer": "^2.15"
     },
     "autoload": {
         "psr-4": {
@@ -41,5 +45,15 @@
                 "Xray" : "Napp\\Xray\\Facades\\Xray"
             }
         }
+    },
+    "scripts": {
+        "check": [
+            "vendor/bin/phpstan --memory-limit=-1 analyze --ansi",
+            "vendor/bin/phpunit --color=always"
+        ],
+        "test:unit": [
+            "vendor/bin/phpstan --memory-limit=-1 analyze --ansi",
+            "vendor/bin/phpunit --coverage-clover clover.xml --log-junit ~/phpunit/junit.xml"
+        ]
     }
 }

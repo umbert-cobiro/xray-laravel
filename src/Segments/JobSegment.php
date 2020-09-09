@@ -18,14 +18,14 @@ class JobSegment extends Segment
      */
     private $result;
 
-    public function setPayload(array $payload)
+    public function setPayload(array $payload): self
     {
         $this->payload = $payload;
 
         return $this;
     }
 
-    public function setResult(bool $result)
+    public function setResult(bool $result): self
     {
         $this->result = $result;
 

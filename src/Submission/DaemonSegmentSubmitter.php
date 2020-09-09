@@ -33,8 +33,6 @@ class DaemonSegmentSubmitter implements SegmentSubmitter
 
     /**
      * Get or create the Daemon submitter.
-     *
-     * @return SubmissionDaemonSegmentSubmitter
      */
     protected function submitter(): SubmissionDaemonSegmentSubmitter
     {
@@ -48,11 +46,7 @@ class DaemonSegmentSubmitter implements SegmentSubmitter
         return $this->submitter;
     }
 
-    /**
-     * @param Segment $segment
-     * @return void
-     */
-    public function submitSegment(Segment $segment)
+    public function submitSegment(Segment $segment): void
     {
         $this->submitter()->submitSegment($segment);
     }
