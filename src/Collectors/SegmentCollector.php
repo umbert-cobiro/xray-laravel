@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Napp\Xray\Collectors;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Napp\Xray\Segments\TimeSegment;
 use Napp\Xray\Segments\Trace;
@@ -118,7 +119,7 @@ class SegmentCollector
         $this->current()->end();
     }
 
-    public function submitHttpTracer($response): void
+    public function submitHttpTracer(Response $response): void
     {
         $submitterClass = config('xray.submitter');
         $tracer = $this->tracer();

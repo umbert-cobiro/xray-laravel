@@ -19,6 +19,10 @@ class RequestTracing
         $this->xray = $xray;
     }
 
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
         return $next($request);
@@ -26,8 +30,10 @@ class RequestTracing
 
     /**
      * Terminates a request/response cycle.
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Response  $response
      */
-    public function terminate($request, $response)
+    public function terminate($request, $response): void
     {
         $this->xray->submitHttpTracer($response);
     }

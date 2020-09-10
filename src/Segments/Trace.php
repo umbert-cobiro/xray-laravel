@@ -13,7 +13,7 @@ class Trace extends BaseTrace
      */
     private static $instance;
 
-    public static function getInstance()
+    public static function getInstance(): self
     {
         if (self::$instance === null) {
             self::$instance = new static();
@@ -22,7 +22,7 @@ class Trace extends BaseTrace
         return self::$instance;
     }
 
-    public static function flush()
+    public static function flush(): void
     {
         self::$instance = new static();
     }

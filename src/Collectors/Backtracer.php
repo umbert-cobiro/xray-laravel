@@ -20,14 +20,20 @@ trait Backtracer
         return array_slice(array_filter($sources), 0, 10);
     }
 
-    public function getCallerClass(array $backtrace): string
+    /**
+     * @return string|false
+     */
+    public function getCallerClass(array $backtrace)
     {
         $arr = explode('\\', $backtrace[0]);
 
         return end($arr);
     }
 
-    protected function parseTrace($index, array $trace)
+    /**
+     * @param int|string$index
+     */
+    protected function parseTrace($index, array $trace): string
     {
         if (isset($trace['class']) && ! $this->isExcludedClass($trace['class'])) {
             return $trace['class'] . ':' . ($trace['line'] ?? '?');
@@ -36,7 +42,7 @@ trait Backtracer
         return '';
     }
 
-    protected function isExcludedClass($className): bool
+    protected function isExcludedClass(string $className): bool
     {
         $excludedPaths = [
             'Illuminate/Database',

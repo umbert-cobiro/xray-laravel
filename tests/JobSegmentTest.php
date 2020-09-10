@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class JobSegmentTest extends TestCase
 {
-    public function test_serializes_correctly()
+    public function test_serializes_correctly(): void
     {
         $payload = [
             [
@@ -31,7 +31,7 @@ class JobSegmentTest extends TestCase
         $this->assertEquals($payload, $serialized['job']['payload']);
     }
 
-    public function test_serializes_correctly_without_payload()
+    public function test_serializes_correctly_without_payload(): void
     {
         $segment = new JobSegment();
         $segment->setResult(false);

@@ -10,6 +10,7 @@ use Napp\Xray\Segments\SqlSegment;
 
 class DatabaseQueryCollector extends EventsCollector
 {
+    /** @var bool */
     protected $bindingsEnabled = false;
 
     public function registerEventListeners(): void

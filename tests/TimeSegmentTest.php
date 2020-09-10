@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class TimeSegmentTest extends TestCase
 {
-    public function test_setting_end_time()
+    public function test_setting_end_time(): void
     {
         $segment = new TimeSegment();
         $segment->setName('test test 123')

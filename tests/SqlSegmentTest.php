@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SqlSegmentTest extends TestCase
 {
-    public function test_serializes_correctly()
+    public function test_serializes_correctly(): void
     {
         $segment = new SqlSegment();
         $segment->setQuery('SELECT *')
@@ -32,7 +32,7 @@ class SqlSegmentTest extends TestCase
         $this->assertEquals('pgsql://test@localhost', $serialized['sql']['url']);
     }
 
-    public function test_setting_start_and_end_time()
+    public function test_setting_start_and_end_time(): void
     {
         $segment = new SqlSegment();
         $segment->setDatabaseType('MySQL')
@@ -46,7 +46,7 @@ class SqlSegmentTest extends TestCase
         $this->assertEquals(1584448768.5, $serialized['end_time']);
     }
 
-    public function test_setting_end_time()
+    public function test_setting_end_time(): void
     {
         $segment = new SqlSegment();
         $segment->setDatabaseType('MySQL')

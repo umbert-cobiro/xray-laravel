@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Napp\Xray;
 
+use Illuminate\Http\Response;
 use Napp\Xray\Collectors\SegmentCollector;
 use Pkerrigan\Xray\Segment;
 use Pkerrigan\Xray\Trace;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Xray
 {
+    /** @var SegmentCollector */
     private $collector;
 
     public function __construct(SegmentCollector $collector)
@@ -33,6 +35,9 @@ class Xray
         return $this->collector->isTracerEnabled();
     }
 
+    /**
+     * @param  array<string,mixed>|null  $metadata
+     */
     public function addSegment(string $name, ?float $startTime = null, ?array $metadata = null): Segment
     {
         return $this->collector->addSegment($name, $startTime, $metadata);
@@ -73,7 +78,7 @@ class Xray
         $this->collector->initCliTracer($name);
     }
 
-    public function submitHttpTracer($response): void
+    public function submitHttpTracer(Response $response): void
     {
         $this->collector->submitHttpTracer($response);
     }

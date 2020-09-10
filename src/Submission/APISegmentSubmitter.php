@@ -30,11 +30,11 @@ class APISegmentSubmitter implements SegmentSubmitter
         ]);
     }
 
-    public function submitSegment(Segment $segment)
+    public function submitSegment(Segment $segment): void
     {
         $this->client->putTraceSegments([
             'TraceSegmentDocuments' => [
-                json_encode($segment->jsonSerialize()),
+                json_encode($segment->jsonSerialize(), JSON_THROW_ON_ERROR),
             ],
         ]);
     }
