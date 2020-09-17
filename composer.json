@@ -10,7 +10,7 @@
         "illuminate/contracts": "^5.5|^6.0|^7.0",
         "illuminate/support": "^5.5|^6.0|^7.0",
         "pkerrigan/xray": "^1.2",
-        "aws/aws-sdk-php": "^3.133"
+        "aws/aws-sdk-php": "^3.*"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0"
